@@ -1,0 +1,39 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Environment setup
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install pnpm
+        run: npm i -g pnpm
+
+      # Install dependencies
+      - name: Install dependencies with pnpm
+        run: pnpm install
+
+      # Build and generate code
+      - name: Build SDK
+        run: pnpm build
+
+      # Publish to NPM and GitHub Pages
+      - name: Publish Documentation
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: docs
+          branch: gh-pages
+      - name: Publish package on NPM
+        run: pnpm publish . --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}

@@ -1,0 +1,44 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Environment setup
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install pnpm
+        run: npm i -g pnpm
+
+      # Install dependencies
+      - name: Install dependencies with pnpm
+        run: pnpm install
+
+      # Build and generate code
+      - name: Build SDK
+        run: pnpm build
+
+      # Upload docs and build to artifacts
+      - name: Upload docs to artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: docs
+      - name: Upload build to artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist

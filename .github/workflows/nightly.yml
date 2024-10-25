@@ -1,4 +1,4 @@
-name: Publish
+name: Nightly
 
 on:
   push:
@@ -26,6 +26,10 @@ jobs:
       # Install dependencies
       - name: Install dependencies with pnpm
         run: pnpm install
+
+      # Check linting
+      - name: Lint
+        run: pnpm lint
 
       # Build and generate code
       - name: Build SDK

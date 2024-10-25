@@ -18,6 +18,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install pnpm
         run: npm i -g pnpm
+      - name: Replace version in package.json to be semver compatible
+        run: sed -i "s/IN-DEV/$(echo $GITHUB_REF | sed 's/refs\/tags\///')/" package.json
 
       # Install dependencies
       - name: Install dependencies with pnpm

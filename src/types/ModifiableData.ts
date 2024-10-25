@@ -5,14 +5,14 @@
  * @template T The type of data to hold.
  */
 export class ModifiableData<T> {
-  private data: T;
+  private data: T
 
   /**
    * Create a new ModifiableData instance.
    * @param {T} data The initial data.
    */
   constructor(data: T) {
-    this.data = data;
+    this.data = data
   }
 
   /**
@@ -20,7 +20,7 @@ export class ModifiableData<T> {
    * @returns {T} The data.
    */
   public get(): T {
-    return this.data;
+    return this.data
   }
 
   /**
@@ -28,6 +28,6 @@ export class ModifiableData<T> {
    * @param {T} data The new data.
    */
   public set(data: T): void {
-    this.data = data;
+    this.data = data
   }
 }

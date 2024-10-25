@@ -27,11 +27,11 @@ jobs:
       - name: Install dependencies with pnpm
         run: pnpm install
 
-      # Check linting
+      # Lint and build
       - name: Lint
         run: pnpm lint
-
-      # Build and generate code
+      - name: Prettier
+        run: pnpm prettier
       - name: Build SDK
         run: pnpm build
 

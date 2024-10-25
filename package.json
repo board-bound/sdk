@@ -5,6 +5,7 @@
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
+  "license": "Apache-2.0",
 	"scripts": {
 		"dev": "parcel watch --no-hmr",
 		"build": "npm run build:ts && npm run build:docs",
@@ -12,7 +13,8 @@
 		"build:docs": "typedoc --out docs src",
 		"lint": "eslint src",
 		"lint:fix": "eslint --fix src",
-		"prettier": "prettier --write src/**/*.ts"
+		"prettier": "prettier --check src/**/*.ts",
+    "prettier:fix": "prettier --write src/**/*.ts"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.13.0",

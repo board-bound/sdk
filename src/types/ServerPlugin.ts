@@ -98,7 +98,11 @@ export interface ServerPlugin<T extends O, G extends O, C extends O | void> {
    * @param {EventBus<T, G>} bus The event bus.
    * @param {pino.Logger} logger The logger.
    */
-  readonly onEnable?: (cfg: C, bus: EventBus<T, G>, logger: pino.Logger) => Promise<void> | void
+  readonly onEnable?: (
+    cfg: C,
+    bus: EventBus<T, G>,
+    logger: pino.Logger
+  ) => Promise<void> | void
 
   /**
    * An function that is called when the plugin is disabled.
@@ -106,5 +110,8 @@ export interface ServerPlugin<T extends O, G extends O, C extends O | void> {
    * @param {EventBus<T, G>} bus The event bus.
    * @param {pino.Logger} logger The logger.
    */
-  readonly onDisable?: (bus: EventBus<T, G>, logger: pino.Logger) => Promise<C | null> | C | null
+  readonly onDisable?: (
+    bus: EventBus<T, G>,
+    logger: pino.Logger
+  ) => Promise<C | null> | C | null
 }

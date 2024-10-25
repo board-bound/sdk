@@ -5,7 +5,7 @@ export class ConnectedUser {
   constructor(
     readonly id: string,
     readonly name: string,
-    readonly ip: string,
+    readonly ip: string
   ) {}
 
   /**

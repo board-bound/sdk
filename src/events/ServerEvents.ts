@@ -4,7 +4,7 @@ import { ModifiableData } from '../types/ModifiableData'
 export type ServerEvents = {
   serverUserPreConnect: {
     ip: string
-    headers: Record<string, string|string[]>
+    headers: Record<string, string | string[]>
     payload: Record<string, unknown>
     name: ModifiableData<string>
   }
